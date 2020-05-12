@@ -4,10 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css"/>
+    <script src="./script.js"></script>
     <title>Connect 4</title>
 </head>
-<body>
-    <canvas id="myCanvas" width="580" height="480"></canvas>
-    <script src="./script.js"></script>
+<body onload="beginGame();">
+		<h1>Connect Four</h1>
+		<!-- The begin_game button will call "beginGame()" function when clicked. -->
+		<button id="begin_game" onclick="beginGame();">Begin Game</button>
+
+	
+		<div id="gameboard">
+			<!-- The game_info div allows game-specific information to be displayed -->
+			<div id="game_info"></div>
+			<table id="game_table">
+				<thead>
+					<tr>
+						<!-- Set up the buttons that will drop the pieces in to the column.  This could be programmatically generated like
+						the rows/columns below, but since it was just 7, it wouldn't really save code -->
+						<td><button onclick="drop(0);">Drop</button></td>
+						<td><button onclick="drop(1);">Drop</button></td>
+						<td><button onclick="drop(2);">Drop</button></td>
+						<td><button onclick="drop(3);">Drop</button></td>
+						<td><button onclick="drop(4);">Drop</button></td>
+						<td><button onclick="drop(5);">Drop</button></td>
+						<td><button onclick="drop(6);">Drop</button></td>
+					</tr>
+                </thead>
+                <script>
+                    for (var tableRow=0; tableRow<=5; tableRow++) {
+                        document.writeln("<tr>");	
+                        for (var tableCol=0; tableCol<=6; tableCol++) {
+                            //write each table data element - with the row and col variables in the ID so it can be accessed later.
+                            document.writeln("<td id='square_" + tableRow + "_"+ tableCol +"' class='board_square'></td>");							
+                        }
+                        //write the closing table row tag.
+                        document.writeln("</tr>");	
+                    }	
+                </script>
+			</table>
+		</div>
 </body>
 </html>
